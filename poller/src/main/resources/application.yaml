@@ -1,0 +1,29 @@
+server:
+  servlet:
+    context-path: /poller
+
+spring:
+  datasource:
+    url: jdbc:mysql://localhost:3306/service_health_db
+    username: mysql_user
+    password: user_password
+  jpa:
+    hibernate:
+      ddl-auto: update
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+
+service:
+  poller:
+    interval: 5000 #millisecond
+  client:
+    timeout:
+      read: 2s
+      connect: 2s
+
+logging:
+  level:
+    com:
+      example:
+        poller: DEBUG
